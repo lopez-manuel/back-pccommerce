@@ -20,10 +20,13 @@ const ProductoSchema = new Schema({
         type: Number,
         required: [true, 'El precio es requerido']
     },
-    categorias: {
-        type: Array,
-        required: [true,'Las categorias son requeridas']
-    }
+    categorias: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Categoria',
+            required: [true,'Las categorias son requeridas']
+        }
+    ]
 
 })
 

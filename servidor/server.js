@@ -4,6 +4,7 @@ const conexionDB = require('../mongoDB/config');
 const productos = require('../routes/productos/productos');
 const usuarios = require('../routes/usuarios/usuarios');
 const auth = require('../routes/auth/auth.route.js');
+const categorias = require('../routes/categorias/categorias.routes');
 
 const cors = require('cors');
 require('dotenv').config();
@@ -28,6 +29,7 @@ class Server {
         this.app.use( '/productos', productos );
         this.app.use('/usuarios', usuarios );
         this.app.use('/auth', auth )
+        this.app.use('/categorias', categorias )
 
     }
 
