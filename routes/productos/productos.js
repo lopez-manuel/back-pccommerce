@@ -1,5 +1,5 @@
 const express = require('express');
-const { postNewProduct, getProducts, deleteProduct } = require('../../controllers/products/products');
+const { postNewProduct, getProducts, deleteProduct, getProductById } = require('../../controllers/products/products');
 const validarCampos = require('../../middlewares/validarCampos');
 const { 
     titulo, 
@@ -31,6 +31,9 @@ router.get('/', getProducts )
 // body('titulo','El titulo de de ser de al menos 5 caracteres').isLength({ min: 5 }),
 //     body('imagenes','Debes cargar por lo menos 1 imagen').isLength({ min: 1 }),
 //     body('descripcion','La descripcion es necesaria (min 20 caract.)').isLength({ min: 20 }),
+
+
+router.get('/:id',[id, validarCampos], getProductById )
 
 
 router.post('/', [ titulo, descripcion, imagenes, precio, categorias, validarCampos ], postNewProduct );

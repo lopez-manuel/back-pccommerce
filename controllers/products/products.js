@@ -1,4 +1,4 @@
-const { request, response } = require('express');
+const { request, response, json } = require('express');
 const Producto = require('../../models/producto');
 const { precio } = require('../../routes/productos/validaciones/validations');
 
@@ -55,6 +55,20 @@ const getProducts = async ( req = request, res = response ) => {
 }
 
 
+const getProductById = async ( req = request, res = response ) => {
+
+    const { id } = req.params;
+
+    const producto = await Producto.findById( id ).populate('categorias');
+
+    res.json({
+        msg: 'peticion correcta',
+        producto
+    })
+
+}
+
+
 const deleteProduct = async ( req = request, res = response ) =>{
 
     const { id } = req.params
@@ -74,5 +88,6 @@ const deleteProduct = async ( req = request, res = response ) =>{
 module.exports = {
     postNewProduct,
     getProducts,
+    getProductById,
     deleteProduct
 }
