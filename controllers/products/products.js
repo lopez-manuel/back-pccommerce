@@ -7,14 +7,15 @@ const { precio } = require('../../routes/productos/validaciones/validations');
 
 const postNewProduct = async ( req = request, res = response ) =>{
 
-    const { imagenes, titulo, descripcion, precio, categorias} = req.body;
+    const { imagenes, titulo, descripcion, precio, categorias, informacion } = req.body;
 
     const producto = new Producto({
         imagenes,
         titulo,
         descripcion,
         precio,
-        categorias
+        categorias,
+        informacion
     });
 
     await producto.save();

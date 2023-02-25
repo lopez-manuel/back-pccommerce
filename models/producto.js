@@ -1,8 +1,6 @@
 
 const { Schema, model } = require('mongoose');
 
-
-
 const ProductoSchema = new Schema({
     imagenes: {
         type: Array,
@@ -26,8 +24,19 @@ const ProductoSchema = new Schema({
             ref: 'Categoria',
             required: [true,'Las categorias son requeridas']
         }
+    ],
+    informacion: {
+        marca: { type: String},
+        modelo: { type: String},
+        fabricante: { type: String},
+        peso: { type: String || Number }
+    },
+    comentarios: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comentario',
+        }
     ]
-
 })
 
 
