@@ -5,6 +5,9 @@ const productos = require('../routes/productos/productos');
 const usuarios = require('../routes/usuarios/usuarios');
 const auth = require('../routes/auth/auth.route.js');
 const categorias = require('../routes/categorias/categorias.routes');
+const archivos = require('../routes/archivos/archivos.routes');
+const fileUpload = require('express-fileupload');
+
 
 const cors = require('cors');
 require('dotenv').config();
@@ -30,6 +33,7 @@ class Server {
         this.app.use('/usuarios', usuarios );
         this.app.use('/auth', auth )
         this.app.use('/categorias', categorias )
+        this.app.use('/archivos', archivos)
 
     }
 
@@ -43,6 +47,12 @@ class Server {
         this.app.use( express.json() );
 
         this.app.use( cors() );
+
+        this.app.use( fileUpload({
+            useTempFiles: true,
+            tempFileDir: '/tmp/',
+            createParentPath: true
+        }))
 
     }
 
