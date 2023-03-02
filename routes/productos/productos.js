@@ -36,7 +36,7 @@ router.get('/', getProducts )
 router.get('/:id',[id, validarCampos], getProductById )
 
 
-router.post('/', [ titulo, descripcion, imagenes, precio, categorias, validarCampos ], postNewProduct );
+router.post('/', [], postNewProduct );
 
 
 router.delete('/:id',[ id, validarCampos ], deleteProduct );
