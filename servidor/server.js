@@ -7,6 +7,7 @@ const auth = require('../routes/auth/auth.route.js');
 const categorias = require('../routes/categorias/categorias.routes');
 const archivos = require('../routes/archivos/archivos.routes');
 const fileUpload = require('express-fileupload');
+const search = require('../routes/search/search.routes');
 
 
 const cors = require('cors');
@@ -31,9 +32,10 @@ class Server {
 
         this.app.use( '/productos', productos );
         this.app.use('/usuarios', usuarios );
-        this.app.use('/auth', auth )
-        this.app.use('/categorias', categorias )
-        this.app.use('/archivos', archivos)
+        this.app.use('/auth', auth );
+        this.app.use('/categorias', categorias );
+        this.app.use('/archivos', archivos);
+        this.app.use('/search', search );
 
     }
 
